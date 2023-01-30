@@ -1,0 +1,53 @@
+﻿@model DeckOfCardsApiLab.Models.DeckDrawApi
+
+@{
+    ViewData["Title"] = "Draw5";
+}
+
+<h1>Drawn Cards</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => Model.cards[0].image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model.cards[0].value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => Model.cards[0].suit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var card in Model.cards)
+        {
+            <tr>
+                <td>
+                    <a href="@card.image" target="_blank"><img src="@card.image" /></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => card.value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => card.suit)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>@Html.DisplayFor(model => model.remaining) cards remaining in deck</p>
+<td>
+    @Html.ActionLink("Draw 5 More", "Draw5", Model)
+</td>
+<br />
+<td>
+    <a asp-area="" asp-controller="Home" asp-action="Index">Return to Home</a>
+</td>
+<br />
+<td>
+    @Html.ActionLink("Reshuffle the Deck and Draw 5 More", "Reshuffle", Model)
+</td>

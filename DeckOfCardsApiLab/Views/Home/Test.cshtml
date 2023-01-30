@@ -1,0 +1,48 @@
+﻿@model DeckOfCardsApiLab.Models.DeckApi
+
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h1>Test</h1>
+
+<h4>DeckApi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Test">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="success" /> @Html.DisplayNameFor(model => model.success)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="deck_id" class="control-label"></label>
+                <input asp-for="deck_id" class="form-control" />
+                <span asp-validation-for="deck_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="remaining" class="control-label"></label>
+                <input asp-for="remaining" class="form-control" />
+                <span asp-validation-for="remaining" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="shuffled" /> @Html.DisplayNameFor(model => model.shuffled)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
